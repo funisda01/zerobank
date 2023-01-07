@@ -23,7 +23,8 @@ public class LoginPage {
     @FindBy (xpath="//input[@name='submit']")
     public WebElement signButton;
 
-    @FindBy (xpath/html/body/div[1]/div[2]/div/div/div/form/div[1]
+    @FindBy(xpath = "//div[@class='alert alert-error']")
+    public WebElement ErrorMessage;
 
 
 }
