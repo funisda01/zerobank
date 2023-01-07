@@ -11,9 +11,9 @@ import org.junit.runner.RunWith;
         plugin = {"json:target/cucumber.json","html:target/cucumber-report.html"},
         features =   "src/test/resources/features",
         glue   =    "src/test/java/com/zerobank/stepdefinitions",
-        dryRun = true,
-        tags = "",
-        publish = true
+        dryRun = false,
+        tags = ""
+        //publish = true
 
 
 )
