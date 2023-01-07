@@ -2,6 +2,7 @@ package com.zerobank.stepdefinitions;
 
 import com.zerobank.pages.AccountSummaryPage;
 import com.zerobank.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -36,5 +37,24 @@ public class AccountSummaryStepDef {
     }
 
 
+    @And("User verifies the Credit Accounts is displayed")
+    public void userVerifiesTheCreditAccountsIsDisplayed() {
+        Assert.assertTrue(accountSummaryPage.CreditAccounts.isDisplayed());
+        
+    }
 
+    @Then("User verifies the Cash Accounts is displayed")
+    public void userVerifiesTheCashAccountsIsDisplayed() {
+        Assert.assertTrue(accountSummaryPage.CashAccounts.isDisplayed());
+    }
+
+    @And("User verifies the Investment Accounts is displayed")
+    public void userVerifiesTheInvestmentAccountsIsDisplayed() {
+        Assert.assertTrue(accountSummaryPage.InvestmentAccounts.isDisplayed());
+    }
+
+    @And("User verifies the Loan Accounts is displayed")
+    public void userVerifiesTheLoanAccountsIsDisplayed() {
+        Assert.assertTrue(accountSummaryPage.LoanAccounts.isDisplayed());
+    }
 }
