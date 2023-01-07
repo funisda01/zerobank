@@ -22,4 +22,5 @@ public class AccountSummaryPage {
 @FindBy(id = "account_summary_link")
 public WebElement AccountSummaryBtn;
 
+
 }
