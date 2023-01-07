@@ -12,11 +12,9 @@ public class AccountSummaryStepDef {
 
     AccountSummaryPage accountSummaryPage = new AccountSummaryPage();
 
-
     @Given("User click on online banking")
     public void user_click_on_online_banking() {
         accountSummaryPage.OnlineBankingBtn.click();
-
 
     }
 
@@ -57,4 +55,20 @@ public class AccountSummaryStepDef {
     public void userVerifiesTheLoanAccountsIsDisplayed() {
         Assert.assertTrue(accountSummaryPage.LoanAccounts.isDisplayed());
     }
+
+    @Then("User verifies Credit Accounts table has Account column")
+    public void user_verifies_credit_accounts_table_has_account_column() {
+        Assert.assertTrue(accountSummaryPage.AccountHeader.isDisplayed());
+
+    }
+    @Then("User verifies Credit Accounts table has Credit Card column")
+    public void user_verifies_credit_accounts_table_has_credit_card_column() {
+        Assert.assertTrue(accountSummaryPage.CreditCardHeader.isDisplayed());
+    }
+    @Then("User verifies Credit Accounts table has Balance column")
+    public void user_verifies_credit_accounts_table_has_balance_column() {
+        Assert.assertTrue(accountSummaryPage.BalanceHeader.isDisplayed());
+    }
+
+
 }

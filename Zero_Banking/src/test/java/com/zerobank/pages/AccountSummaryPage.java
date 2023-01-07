@@ -34,4 +34,15 @@ public class AccountSummaryPage {
     @FindBy(xpath= "//h2[@class='board-header'][4]")
     public WebElement LoanAccounts;
 
+    @FindBy(xpath = "//th[.='Credit Card']/preceding-sibling::*")
+    public WebElement AccountHeader;
+
+    @FindBy(xpath = "//th[.='Credit Card']")
+    public WebElement CreditCardHeader;
+
+    @FindBy(xpath = "//th[.='Credit Card']/following-sibling::*")
+    public WebElement BalanceHeader;
+
+
+
 }
