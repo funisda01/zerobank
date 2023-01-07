@@ -21,3 +21,10 @@ Feature: Account Summary
       And User verifies the Investment Accounts is displayed
       And User verifies the Credit Accounts is displayed
       And User verifies the Loan Accounts is displayed
+
+    Scenario: Credit Accounts Table columns
+      Given User click on online banking
+      When User click on account summary
+      Then User verifies Credit Accounts table has Account column
+      And User verifies Credit Accounts table has Credit Card column
+      And User verifies Credit Accounts table has Balance column
