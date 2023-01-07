@@ -12,3 +12,12 @@ Feature: Account Summary
     Given User click on online banking
     When User click on account summary
     Then Any user should verify zero account page
+
+  @Ismail
+    Scenario: User click the Online Banking Button
+      Given User click on online banking
+      When User click on account summary
+      Then User verifies the Cash Accounts is displayed
+      And User verifies the Investment Accounts is displayed
+      And User verifies the Credit Accounts is displayed
+      And User verifies the Loan Accounts is displayed
