@@ -12,11 +12,9 @@ public class AccountSummaryStepDef {
 
     AccountSummaryPage accountSummaryPage = new AccountSummaryPage();
 
-
     @Given("User click on online banking")
     public void user_click_on_online_banking() {
         accountSummaryPage.OnlineBankingBtn.click();
-
 
     }
 
