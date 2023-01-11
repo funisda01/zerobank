@@ -7,7 +7,7 @@ Feature: Account Summary
     And User clicks on Sign-in Button
     Then Any User should verify the homepage
 
-  @wip
+
   Scenario: User should click on account summary
     Given User click on online banking
     When User click on account summary
