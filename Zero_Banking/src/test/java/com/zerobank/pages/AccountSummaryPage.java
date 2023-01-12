@@ -43,6 +43,16 @@ public class AccountSummaryPage {
     @FindBy(xpath = "//th[.='Credit Card']/following-sibling::*")
     public WebElement BalanceHeader;
 
+    @FindBy(linkText = "Brokerage")
+    public  WebElement BrokerageBtn;
 
+    @FindBy(linkText = "Checking")
+    public WebElement CheckingBtn;
+
+    @FindBy(linkText = "Credit Card")
+    public WebElement CreditCardBtn;
+
+    @FindBy(linkText = "Loan")
+    public WebElement LoanBtn;
 
 }
