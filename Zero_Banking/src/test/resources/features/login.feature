@@ -15,7 +15,7 @@ Feature: Login functionality
     Given User navigates to the url
     When User enters the invalid Login
     And User enters valid Password
-    And User clicks on Sign-in Button
+    And User clicks on Sign-in Button - negative
     Then Any User should verify the error-message
 
 
@@ -24,7 +24,7 @@ Feature: Login functionality
     Given User navigates to the url
     When User enters the valid Login
     And User enters invalid Password
-    And User clicks on Sign-in Button
+    And User clicks on Sign-in Button - negative
     Then Any User should verify the error-message
 
 
@@ -33,7 +33,7 @@ Feature: Login functionality
     Given User navigates to the url
     When User enters the invalid Login
     And User enters invalid Password
-    And User clicks on Sign-in Button
+    And User clicks on Sign-in Button - negative
     Then Any User should verify the error-message
 
 
@@ -42,6 +42,5 @@ Feature: Login functionality
     Given User navigates to the url
     When User keeps Login blank
     And User keeps Password blank
-    And User clicks on Sign-in Button
+    And User clicks on Sign-in Button - negative
     Then Any User should verify the error-message
-

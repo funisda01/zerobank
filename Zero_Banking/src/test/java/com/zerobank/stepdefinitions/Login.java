@@ -30,6 +30,13 @@ public class Login {
       loginPage.signButton.click();
       Driver.getDriver().navigate().back();
     }
+
+    @When("User clicks on Sign-in Button - negative")
+    public void user_clicks_on_sign_in_button_negative() {
+        loginPage.signButton.click();
+        //Driver.getDriver().navigate().back();
+    }
+
     @Then("Any User should verify the homepage")
     public void any_user_should_verify_the_homepage() {
    String ExpectedTitle = "Zero - Personal Banking - Loans - Credit Cards";
@@ -65,6 +72,5 @@ public class Login {
     @And("User keeps Password blank")
     public void userKeepsPasswordBlank() {
         loginPage.password.sendKeys("");
-
     }
 }
