@@ -72,6 +72,5 @@ public class Login {
     @And("User keeps Password blank")
     public void userKeepsPasswordBlank() {
         loginPage.password.sendKeys("");
-
     }
 }
