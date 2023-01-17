@@ -22,5 +22,21 @@ public class WebTableUtilities {
     }
 
 
+    public static ArrayList<String> description(WebElement table) {
+
+        List<WebElement> description = table.findElements(By.xpath("//*[@id='filtered_transactions_for_account']/table/tbody/tr/td[2]"));
+        ArrayList<String> descStrings = new ArrayList<>();
+
+        for (WebElement webElement : description) {
+            descStrings.add(webElement.getText());
+        }
+
+        return descStrings;
+    }
+
+
 
 }
+
+
+

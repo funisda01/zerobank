@@ -45,5 +45,7 @@ public class AccountActivityPage {
 
     @FindBy(xpath = "//div[@id='filtered_transactions_for_account']/table")
     public WebElement table;
+    @FindBy(id = "aa_description")
+    public WebElement descriptionBox;
 
 }

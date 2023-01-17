@@ -67,4 +67,65 @@ public class FindTransactionsStepDef {
 
 
 
+
+    @When("the user enters description {string}")
+    public void the_user_enters_description(String str) {
+   accountActivityPage.descriptionBox.clear();
+    accountActivityPage.descriptionBox.sendKeys(str);
+
+    }
+    @Then("results table should only show descriptions containing {string}")
+    public void results_table_should_only_show_descriptions_containing(String str) {
+        ArrayList<String> description = WebTableUtilities.description(accountActivityPage.table);
+        System.out.println(description);
+       boolean contains = true;
+        for (String desc : description) {
+            if (desc.contains(str)){
+                contains = true;
+            }else {
+                contains = false;
+            }
+        }
+        Assert.assertTrue(contains);
+    }
+
+
+    @Then("results table should not show descriptions containing {string}")
+    public void results_table_should_not_show_descriptions_containing(String str) {
+        ArrayList<String> description = WebTableUtilities.description(accountActivityPage.table);
+        boolean contains = true;
+        for (String desc : description) {
+            if (desc.contains(str)){
+                contains = false;
+            }else {
+                contains = true;
+            }
+        }
+        Assert.assertTrue(contains);
+    }
+
+
+    @Then("results table should only show descriptions containings {string}")
+    public void resultsTableShouldOnlyShowDescriptionsContainings(String arg0) {
+        ArrayList<String> description = WebTableUtilities.description(accountActivityPage.table);
+        System.out.println(description);
+        boolean contains = true;
+        for (String desc : description) {
+            if (desc.contains(arg0)){
+                contains = true;
+            }else {
+                contains = false;
+            }
+        }
+        Assert.assertTrue(contains);
+    }
+
+
+
+
 }
+
+
+
+
+
