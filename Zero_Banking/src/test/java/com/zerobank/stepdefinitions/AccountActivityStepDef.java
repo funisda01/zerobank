@@ -95,5 +95,4 @@ public class AccountActivityStepDef {
         String expectedSelection = "Loan";
         Assert.assertEquals(actualSelection, expectedSelection);
     }
-
 }

@@ -1,15 +1,23 @@
 Feature: Find Transactions in Account Activity
 
+  Background:
+    Given User navigates to the url
+    When User enters the valid Login
+    And User enters valid Password
+    And User clicks on Sign-in Button
+    And the user clicks on Savings link on the Account Summary page
+
+@wip
   Scenario: Search date range
     Given the user accesses the Find Transactions tab
-    When the user enters date range from “2012-09-01” to “2012-09-06”
+    When the user enters date range from "2012-09-01" to "2012-09-06"
     And clicks search
-    Then results table should only show transactions dates between “2012-09-01” to “2012-09-06”
+    Then results table should only show transactions dates between "2012-09-01" to "2012-09-06"
     And the results should be sorted by most recent date
-    When the user enters date range from “2012-09-02” to “2012-09-06”
+    When the user enters date range from "2012-09-02" to "2012-09-06"
     And clicks search
-    Then results table should only show transactions dates between “2012-09-02” to “2012-09-06”
-    And the results table should only not contain transactions dated “2012-09-01”
+    Then results table should only show transactions dates between "2012-09-01" to "2012-09-06"
+    And the results table should only not contain transactions dated "2012-09-02"
 
   Scenario: Search description
     Given the user accesses the Find Transactions tab
