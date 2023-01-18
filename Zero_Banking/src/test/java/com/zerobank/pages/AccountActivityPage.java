@@ -43,7 +43,7 @@ public class AccountActivityPage {
     @FindBy(xpath = "//div[@id='all_transactions_for_account']/table/tbody/tr[3]/td[1]")
     public WebElement transactionsDate3;
 
-    @FindBy(xpath = "//div[@id='filtered_transactions_for_account']/table")
+    @FindBy(xpath = "//*[@id='filtered_transactions_for_account']/table")
     public WebElement table;
     @FindBy(id = "aa_description")
     public WebElement descriptionBox;
