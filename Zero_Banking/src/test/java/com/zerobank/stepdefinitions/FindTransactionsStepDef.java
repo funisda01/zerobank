@@ -84,6 +84,7 @@ public class FindTransactionsStepDef {
     public void results_table_should_only_show_descriptions_containing(String str) throws InterruptedException {
 
         wait(2000);
+        //Added wait for table to change/load
         ArrayList<String> description = WebTableUtilities.description(accountActivityPage.table);
         System.out.println(description);
         for (String desc : description) {
