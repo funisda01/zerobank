@@ -11,6 +11,7 @@ import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
@@ -47,7 +48,6 @@ public class FindTransactionsStepDef {
 
         Assert.assertTrue(fromDateWODash.equals(dates.get(0)) && toDateWODash.equals(dates.get((dates.size() - 1))));
 
-
     }
     @Then("the results should be sorted by most recent date")
     public void the_results_should_be_sorted_by_most_recent_date() {
@@ -69,22 +69,22 @@ public class FindTransactionsStepDef {
 
     }
 
-
-
-
     @When("the user enters description {string}")
     public void the_user_enters_description(String str) {
 
-        //wait(2000);
         accountActivityPage.descriptionBox.clear();
-    accountActivityPage.descriptionBox.sendKeys(str);
-
+        accountActivityPage.descriptionBox.sendKeys(str);
     }
     @Then("results table should only show descriptions containing {string}")
     public void results_table_should_only_show_descriptions_containing(String str) throws InterruptedException {
 
-        wait(2000);
         //Added wait for table to change/load
+        //Thread.sleep(2000);
+
+        synchronized (Driver.getDriver())
+        {
+            Driver.getDriver().wait(2000);
+        }
         ArrayList<String> description = WebTableUtilities.description(accountActivityPage.table);
         System.out.println(description);
         for (String desc : description) {
