@@ -74,13 +74,16 @@ public class FindTransactionsStepDef {
 
     @When("the user enters description {string}")
     public void the_user_enters_description(String str) {
-    accountActivityPage.descriptionBox.clear();
+
+        //wait(2000);
+        accountActivityPage.descriptionBox.clear();
     accountActivityPage.descriptionBox.sendKeys(str);
 
     }
     @Then("results table should only show descriptions containing {string}")
-    public void results_table_should_only_show_descriptions_containing(String str) {
+    public void results_table_should_only_show_descriptions_containing(String str) throws InterruptedException {
 
+        wait(2000);
         ArrayList<String> description = WebTableUtilities.description(accountActivityPage.table);
         System.out.println(description);
         for (String desc : description) {
