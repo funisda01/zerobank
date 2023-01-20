@@ -34,28 +34,18 @@ public class WebTableUtilities {
         return descStrings;
     }
 
-    public static ArrayList<String> deposits(WebElement table){
+    public static List<WebElement> deposits(WebElement table){
 
-        List<WebElement> deposits = table.findElements(By.xpath("//div[@id='filtered_transactions_for_account']/table/tbody/tr/td[3]"));
-        ArrayList<String> depositStr = new ArrayList<>();
+        List<WebElement> list = table.findElements(By.xpath("//div[@id='filtered_transactions_for_account']/table/tbody/tr/td[3]"));
 
-        for (WebElement webElement : deposits) {
-            depositStr.add("" + webElement.getText());
-        }
-
-        return depositStr;
+        return list;
     }
 
-    public static ArrayList<String> withdrawals(WebElement table){
+    public static List<WebElement> withdrawals(WebElement table){
 
-        List<WebElement> withdrawals = table.findElements(By.xpath("//div[@id='filtered_transactions_for_account']/table/tbody/tr/td[4]"));
-        ArrayList<String> strWithdrawals = new ArrayList<>();
+        List<WebElement> list = table.findElements(By.xpath("//div[@id='filtered_transactions_for_account']/table/tbody/tr/td[4]"));
 
-        for (WebElement withdrawal : withdrawals) {
-            strWithdrawals.add("" + withdrawal.getText());
-        }
-
-        return strWithdrawals;
+        return list;
     }
 
 
