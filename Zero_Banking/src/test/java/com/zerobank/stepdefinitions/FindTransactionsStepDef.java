@@ -1,9 +1,11 @@
 package com.zerobank.stepdefinitions;
 
 import com.zerobank.pages.AccountActivityPage;
+import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.Driver;
 import com.zerobank.utilities.WebTableUtilities;
 
+import io.cucumber.java.en.But;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -11,6 +13,9 @@ import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
@@ -47,7 +52,6 @@ public class FindTransactionsStepDef {
 
         Assert.assertTrue(fromDateWODash.equals(dates.get(0)) && toDateWODash.equals(dates.get((dates.size() - 1))));
 
-
     }
     @Then("the results should be sorted by most recent date")
     public void the_results_should_be_sorted_by_most_recent_date() {
@@ -69,22 +73,23 @@ public class FindTransactionsStepDef {
 
     }
 
-
-
-
     @When("the user enters description {string}")
     public void the_user_enters_description(String str) {
 
-        //wait(2000);
         accountActivityPage.descriptionBox.clear();
-    accountActivityPage.descriptionBox.sendKeys(str);
-
+        accountActivityPage.descriptionBox.sendKeys(str);
     }
     @Then("results table should only show descriptions containing {string}")
     public void results_table_should_only_show_descriptions_containing(String str) throws InterruptedException {
 
-        wait(2000);
         //Added wait for table to change/load
+        //Thread.sleep(2000);
+
+        synchronized (Driver.getDriver())
+        {
+            Driver.getDriver().wait(2000);
+        }
+
         ArrayList<String> description = WebTableUtilities.description(accountActivityPage.table);
         System.out.println(description);
         for (String desc : description) {
@@ -94,11 +99,62 @@ public class FindTransactionsStepDef {
 
 
     @Then("results table should not show descriptions containing {string}")
-    public void results_table_should_not_show_descriptions_containing(String str) {
+    public void results_table_should_not_show_descriptions_containing(String str) throws InterruptedException {
+        synchronized (Driver.getDriver())
+        {
+            Driver.getDriver().wait(2000);
+        }
+
+
         ArrayList<String> description = WebTableUtilities.description(accountActivityPage.table);
         for (String desc : description) {
             Assert.assertFalse(desc.contains(str));
         }
+    }
+
+    @Then("results table should show at least one result under Deposit")
+    public void resultsTableShouldShowAtLeastOneResultUnderDeposit() {
+
+        //ArrayList<String> deposits = WebTableUtilities.deposits(accountActivityPage.table);
+        Assert.assertTrue(WebTableUtilities.deposits(accountActivityPage.table).size() >= 1);
+
+    }
+
+    @Then("results table should show at least one result under Withdrawal")
+    public void resultsTableShouldShowAtLeastOneResultUnderWithdrawal() {
+        System.out.println("WebTableUtilities.withdrawals(accountActivityPage.table) = " + WebTableUtilities.withdrawals(accountActivityPage.table));
+        Assert.assertTrue(WebTableUtilities.withdrawals(accountActivityPage.table).size() >= 1);
+    }
+
+    @When("user selects type {string}")
+    public void userSelectsType(String trType) {
+        Select select = new Select(accountActivityPage.transactionType);
+        select.selectByValue(trType.toUpperCase());
+    }
+
+    @But("results table should show no result under Withdrawal")
+    public void resultsTableShouldShowNoResultUnderWithdrawal()  {
+
+        int notNull = 0;
+
+        for (String withdrawal : WebTableUtilities.withdrawals(accountActivityPage.table)) {
+            if(withdrawal.equals(null)){
+
+            }else{
+                notNull++;
+            }
+        }
+
+
+
+        Assert.assertTrue(notNull == 0);
+
+        //Assert.assertTrue(WebTableUtilities.withdrawals(accountActivityPage.table).size() == 0);
+    }
+
+    @But("results table should show no result under Deposit")
+    public void resultsTableShouldShowNoResultUnderDeposit() {
+        Assert.assertTrue(WebTableUtilities.deposits(accountActivityPage.table).size() == 0);
     }
 
 
@@ -116,9 +172,6 @@ public class FindTransactionsStepDef {
         }
         Assert.assertTrue(contains);
     }*/
-
-
-
 
 }
 
