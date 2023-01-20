@@ -48,4 +48,6 @@ public class AccountActivityPage {
     @FindBy(id = "aa_description")
     public WebElement descriptionBox;
 
+    @FindBy(id = "aa_type")
+    public WebElement transactionType;
 }
