@@ -130,6 +130,7 @@ public class FindTransactionsStepDef {
         for (WebElement deposit : deposits) {
             if (deposit.getText().length() > 0) {
                 numOfDeposits += 1;
+                //System.out.println("deposit.getText() = " + deposit.getText());
             }
 
             System.out.println("numOfDeposits = " + numOfDeposits);
@@ -150,6 +151,7 @@ public class FindTransactionsStepDef {
             for (WebElement withdrawal : withdrawals) {
                 if(withdrawal.getText().length() > 0){
                     numOfWithdrawals +=1;
+                    //System.out.println("withdrawal.getText() = " + withdrawal.getText());
                 }
             }
 
@@ -169,17 +171,17 @@ public class FindTransactionsStepDef {
             synchronized (Driver.getDriver()) {
                 Driver.getDriver().wait(2000);
             }
-            int notNull = 0;
+            int notEmpty = 0;
 
             for (WebElement withdrawal : WebTableUtilities.withdrawals(accountActivityPage.table)) {
                 if (withdrawal.getText().length() > 0) {
-
-                    notNull +=1;
+                    //in order to count not empty strings/values
+                    notEmpty +=1;
                 }
             }
 
-            System.out.println("notNull = " + notNull);
-            Assert.assertTrue(notNull == 0);
+            System.out.println("notNull = " + notEmpty);
+            Assert.assertTrue(notEmpty == 0);
 
             //Assert.assertTrue(WebTableUtilities.withdrawals(accountActivityPage.table).size() == 0);
         }
@@ -190,18 +192,23 @@ public class FindTransactionsStepDef {
                 Driver.getDriver().wait(2000);
             }
 
-            int notNull = 0;
+            int notEmpty = 0;
 
             for (WebElement deposit : WebTableUtilities.deposits(accountActivityPage.table)) {
                 if (deposit.getText().length() > 0) {
 
-                    notNull +=1;
+                    notEmpty +=1;
                 }
             }
 
-            System.out.println("notNull = " + notNull);
-            Assert.assertTrue(notNull == 0);
+            System.out.println("notNull = " + notEmpty);
+            Assert.assertTrue(notEmpty == 0);
         }
+
+    @Then("results table should show no result warning")
+    public void resultsTableShouldShowNoResultWarning() {
+        Assert.assertTrue(accountActivityPage.noResultsWarning.isDisplayed());
+    }
 
 
     /*@Then("results table should only show descriptions containings {string}")

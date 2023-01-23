@@ -50,4 +50,7 @@ public class AccountActivityPage {
 
     @FindBy(id = "aa_type")
     public WebElement transactionType;
+
+    @FindBy(xpath = "//div[@class='well']")
+    public WebElement noResultsWarning;
 }
