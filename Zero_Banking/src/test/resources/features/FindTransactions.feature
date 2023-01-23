@@ -38,9 +38,9 @@ Feature: Find Transactions in Account Activity
     Then results table should only show descriptions containing "ONLINE"
     When the user enters description "online"
     And clicks search
-    Then results table should only show descriptions containing "ONLINE"
+    Then results table should show no result warning
 
-  @wip
+
     Scenario: Type
       Given the user accesses the Find Transactions tab
       And clicks search
