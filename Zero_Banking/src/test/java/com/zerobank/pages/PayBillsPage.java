@@ -11,7 +11,7 @@ public class PayBillsPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
     @FindBy(id = "pay_bills_link")
-    public WebElement findBillsLink;
+    public WebElement payBillsLink;
 
     @FindBy(linkText = "Add New Payee")
     public WebElement addNewPayeeTab;
@@ -31,6 +31,17 @@ public class PayBillsPage {
     @FindBy(id = "add_new_payee")
     public WebElement addNewPayeeBtn;
 
+    @FindBy(id = "alert_content")
+    public WebElement messageAlert;
+
+    @FindBy(linkText = "Purchase Foreign Currency")
+    public WebElement purchaseForeignCurrency;
+
+    @FindBy(id = "pc_currency")
+    public WebElement currencyDropdown;
+
+    @FindBy(id = "pc_calculate_costs")
+    public WebElement calculateCostsBtn;
 
 
 }
