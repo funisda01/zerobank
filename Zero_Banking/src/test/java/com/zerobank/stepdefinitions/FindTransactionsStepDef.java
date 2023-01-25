@@ -9,6 +9,7 @@ import io.cucumber.java.en.But;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.sl.In;
 import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -33,16 +34,24 @@ public class FindTransactionsStepDef {
     }
 
     @When("the user enters date range from {string} to {string}")
-    public void theUserEntersDateRangeFromTo(String fromDate, String toDate) {
+    public void theUserEntersDateRangeFromTo(String fromDate, String toDate) throws InterruptedException {
+
+
         accountActivityPage.fromDateInput.clear();
         accountActivityPage.toDateInput.clear();
+
+        synchronized (Driver.getDriver()) {
+            Driver.getDriver().wait(2000);
+        }
         accountActivityPage.fromDateInput.sendKeys(fromDate);
         accountActivityPage.toDateInput.sendKeys(toDate);
+
     }
 
     @When("clicks search")
     public void clicks_search() {
         //accountActivityPage.findBtn.click();
+
         accountActivityPage.findBtn.sendKeys(Keys.ENTER);
     }
 
@@ -54,6 +63,8 @@ public class FindTransactionsStepDef {
         Integer toDateWODash = Integer.parseInt(toDate.replace("-", ""));
 
         Assert.assertTrue(fromDateWODash.equals(dates.get(0)) && toDateWODash.equals(dates.get((dates.size() - 1))));
+
+
 
     }
 
