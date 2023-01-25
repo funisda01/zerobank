@@ -43,5 +43,7 @@ public class PayBillsPage {
     @FindBy(id = "pc_calculate_costs")
     public WebElement calculateCostsBtn;
 
+    @FindBy(id = "pc_amount")
+    public WebElement currencyAmountField;
 
 }

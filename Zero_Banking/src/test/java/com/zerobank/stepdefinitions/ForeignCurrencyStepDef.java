@@ -1,10 +1,12 @@
 package com.zerobank.stepdefinitions;
 
 import com.zerobank.pages.PayBillsPage;
+import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
@@ -49,11 +51,23 @@ public class ForeignCurrencyStepDef {
 
     @When("user tries to calculate cost without selecting a currency")
     public void userTriesToCalculateCostWithoutSelectingACurrency() {
+        payBillsPage.currencyAmountField.clear();
+        payBillsPage.currencyAmountField.sendKeys("100");
         payBillsPage.calculateCostsBtn.click();
     }
 
     @Then("error message should be displayed")
     public void errorMessageShouldBeDisplayed() {
 
+            Alert alert = Driver.getDriver().switchTo().alert();
+        System.out.println("Error Message: " + alert.getText());
+
     }
+
+    @When("user tries to calculate cost without entering a value")
+    public void userTriesToCalculateCostWithoutEnteringAValue() {
+        payBillsPage.currencyAmountField.clear();
+        payBillsPage.calculateCostsBtn.click();
+    }
+
 }
